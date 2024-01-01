@@ -179,17 +179,17 @@ class Vectorizer:
             "all_other_agents_history_positions": all_other_agents_history_positions,
             "all_other_agents_history_yaws": all_other_agents_history_yaws,
             "all_other_agents_history_extents": all_other_agents_history_extents,
-            "all_other_agents_history_availability": all_other_agents_history_availability.astype(np.bool),
+            "all_other_agents_history_availability": all_other_agents_history_availability.astype(np.bool_),
             "all_other_agents_future_positions": all_other_agents_future_positions,
             "all_other_agents_future_yaws": all_other_agents_future_yaws,
             "all_other_agents_future_extents": all_other_agents_future_extents,
-            "all_other_agents_future_availability": all_other_agents_future_availability.astype(np.bool),
+            "all_other_agents_future_availability": all_other_agents_future_availability.astype(np.bool_),
             "all_other_agents_types": all_other_agents_types,
             "all_other_agents_track_ids": all_other_agents_track_ids,
             "agent_trajectory_polyline": agent_trajectory_polyline,
-            "agent_polyline_availability": agent_polyline_availability.astype(np.bool),
+            "agent_polyline_availability": agent_polyline_availability.astype(np.bool_),
             "other_agents_polyline": other_agents_polyline,
-            "other_agents_polyline_availability": other_agents_polyline_availability.astype(np.bool),
+            "other_agents_polyline_availability": other_agents_polyline_availability.astype(np.bool_),
         }
 
         return agent_dict
@@ -302,9 +302,9 @@ class Vectorizer:
 
         return {
             "lanes": lanes,
-            "lanes_availabilities": lanes_availabilities.astype(np.bool),
+            "lanes_availabilities": lanes_availabilities.astype(np.bool_),
             "lanes_mid": lanes_mid,
-            "lanes_mid_availabilities": lanes_mid_availabilities.astype(np.bool),
+            "lanes_mid_availabilities": lanes_mid_availabilities.astype(np.bool_),
             "crosswalks": crosswalks,
-            "crosswalks_availabilities": crosswalks_availabilities.astype(np.bool),
+            "crosswalks_availabilities": crosswalks_availabilities.astype(np.bool_),
         }

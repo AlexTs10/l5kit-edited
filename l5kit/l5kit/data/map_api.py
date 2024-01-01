@@ -396,8 +396,8 @@ class MapAPI:
         lanes_ids = []
         crosswalks_ids = []
 
-        lanes_bounds = np.empty((0, 2, 2), dtype=np.float)  # [(X_MIN, Y_MIN), (X_MAX, Y_MAX)]
-        crosswalks_bounds = np.empty((0, 2, 2), dtype=np.float)  # [(X_MIN, Y_MIN), (X_MAX, Y_MAX)]
+        lanes_bounds = np.empty((0, 2, 2), dtype=np.float64)  # [(X_MIN, Y_MIN), (X_MAX, Y_MAX)]
+        crosswalks_bounds = np.empty((0, 2, 2), dtype=np.float64)  # [(X_MIN, Y_MIN), (X_MAX, Y_MAX)]
 
         for element in self.elements:
             element_id = MapAPI.id_as_str(element.id)

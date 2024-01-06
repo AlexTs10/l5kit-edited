@@ -27,13 +27,28 @@ def convert_str_to_fixed_length_tensor(string: str, max_length: int = kMaxStrLen
         len(string) <= max_length
     ), f"Encountered string longer that maximum length supported ({max_length}): {string}"
     assert "\0" not in string, f"String contains 0 value used for padding: {string}"
-    return torch.cat(
-        (
-            torch.ByteTensor(torch.ByteStorage.from_buffer(string.encode("ascii"))),  # type: ignore
-            torch.zeros(max_length - len(string), dtype=torch.uint8),
-        )
-    )
+#    return torch.cat(
+#        (
+#            torch.ByteTensor(torch.ByteStorage.from_buffer(string.encode("ascii"))),  # type: ignore
+#            torch.zeros(max_length - len(string), dtype=torch.uint8),
+#        )
+#    )
+    # Convert the string to a list of ASCII values
+    encoded_string = [ord(char) for char in string]
 
+    # Create a byte tensor from the ASCII values
+    byte_tensor = torch.tensor(encoded_string, dtype=torch.uint8)
+
+    # Check if padding is needed
+    if len(byte_tensor) < max_length:
+        # Create a tensor of zeros for padding
+        padding = torch.zeros(max_length - len(byte_tensor), dtype=torch.uint8)
+
+        # Concatenate the byte tensor and the padding
+        return torch.cat((byte_tensor, padding))
+    else:
+        # No padding needed, return the byte tensor
+        return byte_tensor
 
 def move_to_device(data: Dict[str, torch.Tensor], device: torch.device) -> Dict[str, torch.Tensor]:
     """Move the data dict to a given torch device
